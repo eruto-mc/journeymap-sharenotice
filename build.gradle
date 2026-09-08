@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+        mavenCentral()
+    }
+    dependencies {
+    }
+}
+
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0.24,6.2)'
+}
+
+
+version = '1.0.0'
+group = 'net.erutobusiness'
+base { archivesName = 'journeymap_sharenotice' }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+}
+
+
+repositories {
+    // JourneyMap の公開している窓口（API）。⚠ **jar 本体ではなく API だけ**を取る。
+    //    免許（journeymap-api の docs/license.md）が
+    //    「You MAY: Write your own code that uses the API source code herein as a dependency」
+    //    と明記している。⚠ MOD 本体のほうの license.txt は reverse-engineered を禁じており、別物。
+    maven {
+        name = "BlameJared (JourneyMap API)"
+        url = "https://maven.blamejared.com"
+        content { includeGroup "info.journeymap" }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+    // ⚠ **compileOnly。** 公式の手引が「jar に API のクラスを同梱するな（No shading is needed）」
+    //    と書いている。実行時は JourneyMap 本体が同じクラスを持っている。
+    compileOnly 'info.journeymap:journeymap-api-forge:1.20.1-2.0.0'
+}
+
+jar {
+    manifest {
+        attributes([
+            'Specification-Title'   : 'journeymap_sharenotice',
+            'Specification-Version' : '1',
+            'Implementation-Title'  : 'JourneyMap Share Notice',
+            'Implementation-Version': project.version,
+        ])
+    }
+}

@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+    modId="journeymap_sharenotice"
+    version="${file.jarVersion}"
+    displayName="JourneyMap Share Notice"
+    authors="erutobusiness"
+    description="ウェイポイントを共有したとき、送った本人のチャットにも1行出す。JourneyMap 6.0 は受け取った側にしか出さないため。"
+
+[[dependencies.journeymap_sharenotice]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="SERVER"
+
+# ⚠ **JourneyMap は任意扱い**（抜いてもこの MOD が起動を止めないため）。
+#    実際に効くのは JourneyMap が在るときだけで、無ければプラグインが読み込まれず何もしない。
+# ⚠ 版の下限を 6.0.0 にしてある——共有の窓口（WaypointShareSubmitEvent）は
+#    journeymap-api 2.0.0＝JourneyMap 6.0 から。
+[[dependencies.journeymap_sharenotice]]
+    modId="journeymap"
+    mandatory=false
+    versionRange="[1.20.1-6.0.0,)"
+    ordering="AFTER"
+    side="SERVER"
