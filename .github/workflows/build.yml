@@ -30,7 +30,12 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - run: ./gradlew build --no-daemon
+      # ⚠ **`bash` から呼ぶ。** このリポジトリは Windows で作ったので
+      #    `gradlew` に実行の印（100755）が付いておらず、`./gradlew` だと
+      #    `Permission denied`（exit 126）で落ちる。⚠ 印だけの変更は
+      #    当部のコミットの番人（対象を名指しさせる）と Windows の
+      #    `core.filemode=false` の組み合わせでは commit できない。
+      - run: bash ./gradlew build --no-daemon
 
       - uses: actions/upload-artifact@v4
         with:
