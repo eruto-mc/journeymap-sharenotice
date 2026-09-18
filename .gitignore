@@ -2,3 +2,6 @@ build/
 .gradle/
 run/
 build*.log
+
+# IDE（Eclipse/VSCode）が建てる class の置き場。生成物なので追わない
+bin/
