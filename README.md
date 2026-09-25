@@ -48,7 +48,19 @@ JourneyMap 6.0 の「共有」は、**相手にしか知らせない。**
 
 ## 免許の話（⚠ ここを踏み外さない）
 
-⚠ **JourneyMap 本体の `license.txt` は `reverse-engineered` を名指しで禁じている。**
+⚠ **JourneyMap 本体は全権利留保。** jar の `license.txt` は、書面の許可なく変えること・逆アセンブルすること・配ることを禁じている:
+
+> This mod may not be altered, file-hosted, re-packaged, reverse-engineered, or distributed in part or in whole without express written permission by Mark Woodman (techbrew).
+
+公式の licensing の頁（`teamjm.github.io/journeymap-docs/latest/about/licensing/`）はもっと細かく、
+仕組みを調べるための逆アセンブルは許し、本体を変えることは禁じている。許していること:
+
+> Decompile the mod for the purpose of inspecting how it works and what it does, under the relevant laws in the USA.
+
+禁じていること:
+
+> Modify the mod in any way, even for personal use.
+
 この MOD は本体に一切触らず、**別に公開されている API** だけを使う。
 `journeymap-api` の `docs/license.md` が明記している:
 
